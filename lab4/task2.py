@@ -9,9 +9,7 @@ def task() -> None:
     with open(INPUT_FILENAME, 'r') as csv_file:
         csv_data = csv.reader(csv_file)
         headers = next(csv_data)
-        data = []
-        for row in csv_data:
-            data.append(dict(zip(headers, row)))
+        data = [dict(zip(headers, row)) for row in csv_data]  # замена на list comprehension
 
     with open(OUTPUT_FILENAME, 'w') as json_file:
         json_file.write(json.dumps(data, indent=4))
